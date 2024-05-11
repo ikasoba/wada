@@ -27,15 +27,6 @@ export class WadaRuntime {
     const self = this as InitializedWadaRuntime;
 
     return {
-      // goとかを動かせるように最小限のものを用意する
-      wasi_snapshot_preview1: {
-        fd_write: (
-          fd: number,
-          iovs: number,
-          iovsLen: number,
-          nwritten: number
-        ) => 0,
-      },
       wada: {
         conn_header: self.conn_header.bind(self),
         conn_body_write: self.conn_body_write.bind(self),
